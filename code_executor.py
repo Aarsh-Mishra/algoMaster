@@ -12,6 +12,7 @@ from autogen_core.models import ModelInfo
 from autogen_agentchat.messages import TextMessage, MultiModalMessage
 from autogen_agentchat.conditions import TextMentionTermination
 from autogen_core import CancellationToken
+from autogen_agentchat.base import TaskResult
 from autogen_agentchat.ui import Console
 
 
@@ -77,9 +78,11 @@ async def main():
         task = 'write a python code to add two numbers'
 
         async for message in team.run_stream(task = task):
-            print('==' * 20)
-            print(message.source, ":", message)
-            print('==' * 20)
+            if isinstance(message, TextMessage):
+                print("=="*20)
+                print(message.source, ":", message)
+            elif isinstance(message, TaskResult):
+                print('Stop  Reason:', message.stop_reason)
 
     except Exception as e:
         print("Error occurred: ", e)
