@@ -1,4 +1,5 @@
-from agents import get_problem_solver_agent, get_code_executor_agent
+from agents.prob_solver_agent import get_problem_solver_agent
+from agents.code_executor_agent import get_code_executor_agent
 from autogen_agentchat.teams import RoundRobinGroupChat
 from autogen_agentchat.conditions import TextMentionTermination
 
@@ -11,7 +12,7 @@ def get_dsa_team_and_docker():
     termination_condition = TextMentionTermination(TEXT_MENTION)
 
     team = RoundRobinGroupChat(
-        agents=[
+        participants=[
             problem_solver_agent,
             code_executor_agent
         ],
