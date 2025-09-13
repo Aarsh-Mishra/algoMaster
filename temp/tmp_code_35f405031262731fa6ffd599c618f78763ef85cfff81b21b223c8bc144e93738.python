@@ -1,0 +1,45 @@
+def partition(arr, low, high):
+    """Partitions the array around the pivot element (arr[high])."""
+    pivot = arr[high]
+    i = (low - 1)  # Index of smaller element
+    for j in range(low, high):
+        # If current element is smaller than or equal to pivot
+        if arr[j] <= pivot:
+            # increment index of smaller element
+            i = i + 1
+            arr[i], arr[j] = arr[j], arr[i]
+
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
+    return (i + 1)
+
+
+def quickSort(arr, low, high):
+    """Sorts the array using the Quicksort algorithm."""
+    if low < high:
+        # pi is partitioning index, arr[pi] is now at right place
+        pi = partition(arr, low, high)
+
+        # Separately sort elements before partition and after partition
+        quickSort(arr, low, pi - 1)
+        quickSort(arr, pi + 1, high)
+
+
+# Test cases
+arr1 = [10, 7, 8, 9, 1, 5]
+arr2 = [1, 2, 3, 4, 5, 6]
+arr3 = [6, 5, 4, 3, 2, 1]
+arr4 = [5, 2, 8, 1, 9, 2, 4]
+arr5 = [4,4,4,4,4]
+
+quickSort(arr1, 0, len(arr1) - 1)
+quickSort(arr2, 0, len(arr2) - 1)
+quickSort(arr3, 0, len(arr3) - 1)
+quickSort(arr4, 0, len(arr4) - 1)
+quickSort(arr5, 0, len(arr5) - 1)
+
+
+print("Sorted array1 is:", arr1)
+print("Sorted array2 is:", arr2)
+print("Sorted array3 is:", arr3)
+print("Sorted array4 is:", arr4)
+print("Sorted array5 is:", arr5)

@@ -1,0 +1,22 @@
+def add_numbers(num1, num2):
+  """
+  This function adds two numbers and returns the sum.
+
+  Args:
+    num1: The first number.
+    num2: The second number.
+
+  Returns:
+    The sum of the two numbers.
+  """
+  sum_result = num1 + num2
+  return sum_result
+
+# Test cases
+test_case_1 = add_numbers(5, 3)
+test_case_2 = add_numbers(-10, 20)
+test_case_3 = add_numbers(0, 0)
+
+print(f"Test Case 1: {test_case_1}")
+print(f"Test Case 2: {test_case_2}")
+print(f"Test Case 3: {test_case_3}")
